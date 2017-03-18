@@ -26,37 +26,71 @@
 
         emulator.start({ waitAfterDownloading: false });
         
+        
         // TODO Do some extra set-up to allow adding/getting filesystem
-      
+        function action_fullscreen() {
+            emulator.requestFullScreen();
+        }
+        
+        function action_wipe_and_reload() {
+            if(confirm("Wipe the filesystem and reload?")) {
+                // The emularity uses the browsers IndexedDB with database name 'emularity'
+                window.indexedDB.deleteDatabase("emularity");
+                window.indexedDB.deleteDatabase("starsdat");
+                window.location.reload();
+            }
+        }
+        
+        function action_add_file() {
+            // TODO
+        }
+        
+        function action_get_file() {
+            // TODO
+        }
     </script>
     </canvas>
     
     <br/>
     
-    <script type="text/javascript">
-        function tools_wipe_and_reload() {
-            if(confirm("Wipe the filesystem and reload?")) {
-                // The emularity uses the browsers IndexedDB with database name 'emularity'
-                window.indexedDB.deleteDatabase("emularity");
-                window.location.reload();
-            }
-        }
-        
-        function tools_add_file() {
-            // TODO
-        }
-        
-        function tools_get_file() {
-            // TODO
-        }
-    </script>
-    
-    <div id="tools">
-    <h3>Tools</h3>
-    <p>
-        <button type="button" onclick="tools_wipe_and_reload();">Wipe and Reload</button>
-        Wipe the browser filesystem and reload the page.  This will forget the Stars! key and any saved games.
-    </p>
+    <div id="actions">
+    <h3>Actions</h3>
+    <table>
+    <tr>
+        <td>
+            <button type="button" onclick="action_fullscreen();">Go Fullscreen</button>
+        </td>
+        <td>
+            Attempt to use fullscreen mode
+        </td>
+    </tr>
+<!--
+    <tr>
+        <td>
+            <button type="button" onclick="action_add_file();">Add File</button>
+        </td>
+        <td>
+            Add file to the system.  Found under D:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="button" onclick="action_get_file();">Get File</button>
+        </td>
+        <td>
+            Get file from D:
+        </td>
+    </tr>
+-->
+    <tr>
+        <td>
+            <button type="button" onclick="action_wipe_and_reload();">Wipe and Reload (DANGER)</button>
+        </td>
+        <td>
+            Wipe the browser filesystem and reload the page.  <b>This will forget the Stars! key and any saved games.</b>
+        </td>
+    </tr>
+    </table>
     </div>
   </body>
 </html>
