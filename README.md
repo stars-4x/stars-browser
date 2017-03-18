@@ -1,4 +1,4 @@
-# stars-emdosbox
+# stars-browser
 Stars! in the web browser
 
 Currently [the emularity](https://github.com/db48x/emularity/) is used to run Stars! on Windows 3.1 in DOSBox in the browser.  Relevant technologies:
